@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Text Character Counter</title>
+
+    <!-- CSS -->
+    <style>
+      .character-counter {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        align-items: center;
+
+        font-family: cursive;
+      }
+
+      .character-container {
+        background-color: lightpink;
+        width: 400px;
+        padding: 20px;
+        margin: 5px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .textarea {
+        resize: none;
+        width: 100%;
+        height: 100px;
+        font-size: 18px;
+        font-family: sans-serif;
+        padding: 10px;
+        box-sizing: border-box;
+        border: solid 2px darkgray;
+      }
+
+      .counter-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 5px;
+      }
+
+      .counter-container p {
+        font-size: 18px;
+        color: gray;
+      }
+
+      .total-counter {
+        color: slateblue;
+      }
+
+      .remaining-counter {
+        color: orangered;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Kim Jayson</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >Home</a
+              >
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle active"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                8 JS function
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="Calculator.html">Calculator</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="ramdom-quotes-generator.html"
+                    >Qoutes Generator
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="text-character-counter.html"
+                    >Character Counter
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="search-image.html"
+                    >Search Image
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="emoji-rating.html"
+                    >Emoji Rating
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="weather-app.html"
+                    >Weather App
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Add-to-cart.html"
+                    >Add to Cart
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Sort-filter.html"
+                    >Sort/Filter Function
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Character counter -->
+    <section class="character-counter">
+      <div class="container character-container">
+        <h2>Real-time Charater Counter</h2>
+        <textarea
+          id="textarea"
+          class="textarea"
+          placeholder="Please write your text here..."
+          maxlength="50"
+        ></textarea>
+        <div class="counter-container">
+          <p>
+            Total Charaters:
+            <span class="total-counter" id="total-counter"></span>
+          </p>
+          <p>
+            Remaining:
+            <span class="remaining-counter" id="remaining-counter"></span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- JS -->
+    <script>
+      const textareaEl = document.getElementById("textarea");
+      const totalCounterEl = document.getElementById("total-counter");
+      const remainingCounterEl = document.getElementById("remaining-counter");
+
+      textareaEl.addEventListener("keyup", () => {
+        updateCounter();
+      });
+
+      updateCounter();
+
+      function updateCounter() {
+        totalCounterEl.innerText = textareaEl.value.length;
+        remainingCounterEl.innerText =
+          textareaEl.getAttribute("maxLength") - textareaEl.value.length;
+      }
+    </script>
+  </body>
+</html>
